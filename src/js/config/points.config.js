@@ -33,7 +33,7 @@ const points = [
                 result: "видели два раза, два раза убегал.",
             }
         ]),
-        iconColor: "#882426",
+        iconColor: "#FFa577",
     },
     {
         coords: [50.075843, 19.858185],
