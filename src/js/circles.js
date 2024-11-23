@@ -5,7 +5,15 @@ function addCircleCheckbox({circle, name, leafletMap, index, radius}) {
     const isChecked = JSON.parse(localStorage.getItem(checkBoxId));
 
     label.innerHTML =
-        `<input type="checkbox" id="${checkBoxId}" ${isChecked ? 'checked' : ''}>${name} (Радиус: ${radius} м)`;
+        `<li>
+            <label class="checkbox-label">
+                <input 
+                    type="checkbox" 
+                    id="${checkBoxId}" ${isChecked ? 'checked' : ''} 
+                    class="checkbox-input">
+                ${name} (Радиус: ${radius} м)
+            </label>
+        </li>`;
     controlContainer.appendChild(label);
 
     if(isChecked){

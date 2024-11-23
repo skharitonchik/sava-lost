@@ -1,0 +1,88 @@
+#menu-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #c4dfe6;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* Общий стиль линий для меню */
+.line {
+    position: absolute;
+    width: 24px;
+    height: 3px;
+    background-color: #07575b;
+    transition: all 0.3s ease;
+}
+
+.line:nth-child(1) {
+    top: 10px;
+}
+
+.line:nth-child(2) {
+    top: 18px;
+}
+
+.line:nth-child(3) {
+    top: 26px;
+}
+
+/* Стили для открытого меню (крестик) */
+#menu-icon.open .line:nth-child(1) {
+    transform: rotate(45deg);
+    top: 18px;
+}
+
+#menu-icon.open .line:nth-child(2) {
+    opacity: 0;
+}
+
+#menu-icon.open .line:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 18px;
+}
+
+/* Открытое меню */
+#menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background-color: #ead39c;
+    overflow: hidden;
+    transition: width 0.3s ease;
+    z-index: 999;
+    box-shadow: -4px 0 6px rgba(0, 0, 0, 0.2);
+}
+
+#menu.open {
+    width: 90vw;
+}
+
+#menu-content {
+    padding: 20px;
+}
+
+#menu-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+#menu-content ul li {
+    margin: 15px 0;
+}
+
+#menu-content ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}

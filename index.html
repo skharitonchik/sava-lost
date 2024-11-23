@@ -5,27 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sava Search Map</title>
     <link rel="stylesheet" href="src/style/style.css">
+    <link rel="stylesheet" href="src/style/center-icon.css">
+    <link rel="stylesheet" href="src/style/menu-icon.css">
     <link
             rel="stylesheet"
             href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     />
 </head>
 <body>
-<div id="controls-container">
-    <button id="toggle-controls">Развернуть</button>
-    <div id="controls" class="hidden">
-        <label>
-            <input type="checkbox" id="toggle-points" checked>
-            Показывать точки
-        </label>
-        <label>
-            <input type="checkbox" id="toggle-streets" checked> Показывать улицы
-        </label>
-        <div class="circle-controls" id="circle-controls"></div>
+<div id="menu-icon">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+</div>
+
+<div id="menu">
+    <div id="menu-content">
+        <ul id="main-controls">
+            <li>
+                <label class="checkbox-label">
+                    <input class="checkbox-input" type="checkbox" id="toggle-points" checked>
+                    Показывать точки
+                </label>
+            </li>
+            <li>
+                <label class="checkbox-label">
+                    <input class="checkbox-input" type="checkbox" id="toggle-streets" checked> Показывать улицы
+                </label>
+            </li>
+        </ul>
+        <ul id="circle-controls">
+        </ul>
     </div>
 </div>
 <div id="map-container">
     <div id="map"></div>
+    <div id="center-icon" class="icon-wrapper">
+        <div class="icon">
+            <div class="circle"></div>
+        </div>
+    </div>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

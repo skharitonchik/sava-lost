@@ -1,11 +1,10 @@
-function addToggleBtn(){
-    // Логика сворачивания/разворачивания блока с чекбоксами
-    const toggleButton = document.getElementById('toggle-controls');
-    const controlsContainer = document.getElementById('controls');
+function addMenuIcon(){
+    const menuIcon = document.getElementById('menu-icon');
+    const menu = document.getElementById('menu');
 
-    toggleButton.addEventListener('click', () => {
-        const isHidden = controlsContainer.classList.toggle('hidden');
-        toggleButton.textContent = isHidden ? 'Развернуть' : 'Свернуть';
+    menuIcon.addEventListener('click', () => {
+        menuIcon.classList.toggle('open');
+        menu.classList.toggle('open');
     });
 }
 
@@ -15,13 +14,14 @@ function init(){
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors',
     }).addTo(leafletMap);
-
     initCircles(leafletMap);
     initPoints(leafletMap);
     initGeolocation(leafletMap);
     initStreets(leafletMap);
 
-    addToggleBtn();
+    addMenuIcon();
+
+
 }
 
 

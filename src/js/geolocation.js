@@ -1,6 +1,10 @@
+let userMarker = null;
+let lastUserPosition = null;
+
 // Функция для обновления текущего местоположения
-function updateUserPosition({position, leafletMap, userMarker}) {
+function updateUserPosition({position, leafletMap}) {
     const {latitude, longitude} = position.coords;
+    lastUserPosition = {latitude, longitude};
 
     // Если маркер уже существует, обновляем его координаты
     if (userMarker) {
@@ -22,28 +26,32 @@ function updateUserPosition({position, leafletMap, userMarker}) {
             }),
         }).addTo(leafletMap);
     }
-
-    // Центрируем карту на новом положении
-    leafletMap.setView([latitude, longitude], INIT_ZOOM);
 }
 
+function addCenterIconHandler (leafletMap) {
+    document.getElementById('center-icon').addEventListener('click', () => {
+        if (lastUserPosition) {
+            const {latitude, longitude} = lastUserPosition;
+
+            leafletMap.setView([latitude, longitude], INIT_ZOOM);
+        }
+    });
+}
 
 function initGeolocation(leafletMap) {
-    let userMarker; // Глобальная переменная для маркера местоположения
-
-// Запускаем отслеживание местоположения
     if ('geolocation' in navigator) {
+        addCenterIconHandler(leafletMap);
+
         navigator.geolocation.watchPosition(
             (position) => {
-                updateUserPosition({position, leafletMap, userMarker})
+                updateUserPosition({position, leafletMap})
             },
             (error) => {
                 console.error('Ошибка получения местоположения:', error);
             },
-            {enableHighAccuracy: true, maximumAge: 20000}
+            {enableHighAccuracy: true, maximumAge: 30000}
         );
     } else {
         console.error('Geolocation API не поддерживается в этом браузере.');
     }
-
 }
