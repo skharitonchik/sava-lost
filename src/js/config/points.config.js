@@ -24,7 +24,8 @@ function createDescription(title, items) {
 // Конфигурация точек
 const points = [
     {
-        coords: [50.072207, 19.856787],
+        coords: CENTER_COORDS,
+        text: '0',
         description: createDescription("Дом где было ограбление", [
             {
                 description: "Вечер субботы в 19 скорее всего было ограбление, начали поиски кота с 22",
@@ -33,10 +34,11 @@ const points = [
                 result: "видели два раза, два раза убегал.",
             }
         ]),
-        iconColor: "#FFa577",
+        iconColor: "#16501c",
     },
     {
-        coords: [50.075843, 19.858185],
+        coords: [50.0762496591327, 19.85702951393996],
+        text: '1',
         description: createDescription("Дом возле поля, первый звонок", [
             {
                 description: "Девушка видела возле окна своего дома около 6 утра, позвонила около 22, рядом заброшенный дом в котором кто-то живет",
@@ -47,7 +49,8 @@ const points = [
         iconColor: "#882426",
     },
     {
-        coords: [50.070779, 19.859365],
+        coords: [50.0708092485313, 19.85879826865925],
+        text: '2',
         description: createDescription("Бабушка которая подкармливает котов", [
             {
                 description: "Позвонила девушка которая подкармливает, сказала кушал, но на руки не пошел",
@@ -63,7 +66,8 @@ const points = [
         iconColor: "#882426",
     },
     {
-        coords: [50.067901, 19.859899],
+        coords: [50.0678417150839, 19.858996435744917],
+        text: '3',
         description: createDescription("Улица возле ветеринарки", [
             {
                 description: "Видели на улице похожего кота",
@@ -74,6 +78,4 @@ const points = [
         ]),
         iconColor: "#882426",
     },
-
-
 ];

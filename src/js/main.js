@@ -8,6 +8,7 @@ function init(){
     initCircles(leafletMap);
     initPoints(leafletMap);
     initGeolocation(leafletMap);
+    initStreets(leafletMap);
 }
 
 
