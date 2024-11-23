@@ -1,47 +1,47 @@
 const swapCoordinates = (coordinates) => coordinates.map(([lat, lng]) => [lng, lat]);
 
-function getFeatures() {
-    return STREETS.map((streetCoords) => {
-        return {
-            "type": "Feature",
-            "properties": {"name": "Улица обклеена"},
-            "geometry": {
-                "type": "LineString",
-                "coordinates": swapCoordinates(streetCoords)
-            }
+function getFeature({name, streetCoords, color}) {
+    return {
+        type: "Feature",
+        properties: {name},
+        color: color ?? "#e94f08",
+        geometry: {
+            type: "LineString",
+            coordinates: swapCoordinates(streetCoords)
         }
-    });
+    }
+}
+
+function getFeatures() {
+    return STREETS.map((streetCoords) => getFeature({
+            name: "Улица обклеена",
+            streetCoords,
+        })
+    );
 }
 
 function getFeatureCollection() {
     const features = getFeatures();
 
-    if(SHOW_CAT_ROUTE){
-        features.push(
-            {
-                "type": "Feature",
-                "properties": {"name": "Путь Савы"},
-                color: 'blue',
-                "geometry": {
-                    "type": "LineString",
-                    "coordinates": swapCoordinates(CAT_ROUTE)
-                }
-            }
-        )
+    if (SHOW_CAT_ROUTE) {
+        features.push(getFeature({name: "Путь Савы", color: "blue", streetCoords: CAT_ROUTE}))
     }
 
-    if(STREETS_TO_MARK.length > 0){
-        const streets = STREETS_TO_MARK.map((streetCoords) => {
-            return {
-                "type": "Feature",
-                "properties": {"name": "Улица для обклейки"},
-                color: 'blue',
-                "geometry": {
-                    "type": "LineString",
-                    "coordinates": swapCoordinates(streetCoords)
-                }
-            }
-        });
+    if (STREETS_TO_MARK.length > 0) {
+        const streets = STREETS_TO_MARK.map((streetCoords) =>
+            getFeature({name: "Улица для обклейки", streetCoords, color: 'blue'})
+        )
+
+        features.push(...streets);
+    }
+
+    if (STREETS_TO_CHECK.length > 0) {
+        const streets = STREETS_TO_CHECK.map((streetCoords) => getFeature({
+                name: "Улица для проверки",
+                streetCoords,
+                color: 'green'
+            })
+        );
 
         features.push(...streets);
     }
@@ -52,15 +52,29 @@ function getFeatureCollection() {
     }
 }
 
+// Функция для управления видимостью улиц
+function toggleStreets(checkbox, leafletMap, streetLayer) {
+    if (checkbox.checked) {
+        // Добавляем слой обратно на карту
+        streetLayer.addTo(leafletMap);
+        localStorage.setItem('toggle-streets', 'true')
+    } else {
+        // Удаляем слой с карты
+        leafletMap.removeLayer(streetLayer);
+        localStorage.setItem('toggle-streets', 'false');
+    }
+}
 
 function initStreets(leafletMap) {
     const features = getFeatureCollection();
-
-    L.geoJSON(features, {
+    const isChecked = JSON.parse(localStorage.getItem('toggle-streets'));
+    const streetCheckbox = document.getElementById('toggle-streets');
+    const streetLayer = L.geoJSON(features, {
         style: (feature) => {
             const {color} = feature;
+
             return {
-                color: color ?? "red",
+                color,
                 weight: 6,
                 opacity: 0.8
             };
@@ -72,4 +86,15 @@ function initStreets(leafletMap) {
         }
     }).addTo(leafletMap);
 
+    if (isChecked) {
+        streetLayer.addTo(leafletMap);
+        streetCheckbox.checked = true;
+    } else {
+        leafletMap.removeLayer(streetLayer);
+        streetCheckbox.checked = false;
+    }
+
+    streetCheckbox.addEventListener('change', (event) => {
+        toggleStreets(event.target, leafletMap, streetLayer);
+    });
 }
