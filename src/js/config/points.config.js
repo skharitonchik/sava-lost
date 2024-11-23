@@ -37,7 +37,7 @@ const points = [
         iconColor: "#16501c",
     },
     {
-        coords: [50.0762496591327, 19.85702951393996],
+        coords: FIRST_CAT_POINT,
         text: '1',
         description: createDescription("Дом возле поля, первый звонок", [
             {
@@ -49,7 +49,7 @@ const points = [
         iconColor: "#882426",
     },
     {
-        coords: [50.0708092485313, 19.85879826865925],
+        coords: SECOND_CAT_POINT,
         text: '2',
         description: createDescription("Бабушка которая подкармливает котов", [
             {
@@ -66,7 +66,7 @@ const points = [
         iconColor: "#882426",
     },
     {
-        coords: [50.0678417150839, 19.858996435744917],
+        coords: THIRD_CAT_POINT,
         text: '3',
         description: createDescription("Улица возле ветеринарки", [
             {

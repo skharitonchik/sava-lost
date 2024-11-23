@@ -1,3 +1,14 @@
+function addToggleBtn(){
+    // Логика сворачивания/разворачивания блока с чекбоксами
+    const toggleButton = document.getElementById('toggle-controls');
+    const controlsContainer = document.getElementById('controls');
+
+    toggleButton.addEventListener('click', () => {
+        const isHidden = controlsContainer.classList.toggle('hidden');
+        toggleButton.textContent = isHidden ? 'Развернуть' : 'Свернуть';
+    });
+}
+
 function init(){
     const leafletMap = L.map('map').setView(CENTER_COORDS, INIT_ZOOM);
 
@@ -9,6 +20,8 @@ function init(){
     initPoints(leafletMap);
     initGeolocation(leafletMap);
     initStreets(leafletMap);
+
+    addToggleBtn();
 }
 
 
