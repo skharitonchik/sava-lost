@@ -54,6 +54,13 @@ function initMenuHandler() {
             document.getElementById(`page-${pageName}`).classList.add('active');
             item.classList.add('active');
 
+            if(pageName === 'page-map'){
+                setuperWithErrorHandler(() => initCircles(leafletMap), 'CIRCLES');
+                setuperWithErrorHandler(() => initPoints(leafletMap), 'POINTS');
+                setuperWithErrorHandler(() => initGeolocation(leafletMap), 'GEO');
+                setuperWithErrorHandler(() => initStreets(leafletMap), 'STREETS');
+            }
+
             mainMenu.classList.remove('open');
             mainMenuIcon.classList.remove('open');
         });
