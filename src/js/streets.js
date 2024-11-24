@@ -4,7 +4,7 @@ function getFeature({name, streetCoords, color}) {
     return {
         type: "Feature",
         properties: {name},
-        color: color ?? "#e94f08",
+        color: color ?? COLOR_FOR_MARKED_STREETS,
         geometry: {
             type: "LineString",
             coordinates: swapCoordinates(streetCoords)
@@ -24,12 +24,12 @@ function getFeatureCollection() {
     const features = getFeatures();
 
     if (SHOW_CAT_ROUTE) {
-        features.push(getFeature({name: "Путь Савы", color: "blue", streetCoords: CAT_ROUTE}))
+        features.push(getFeature({name: "Путь Савы", color: COLOR_FOR_CAT_ROUTE, streetCoords: CAT_ROUTE}))
     }
 
     if (STREETS_TO_MARK.length > 0) {
         const streets = STREETS_TO_MARK.map((streetCoords) =>
-            getFeature({name: "Улица для обклейки", streetCoords, color: 'blue'})
+            getFeature({name: "Улица для обклейки", streetCoords, color: COLOR_FOR_NON_MARKED_STREETS})
         )
 
         features.push(...streets);
@@ -39,7 +39,7 @@ function getFeatureCollection() {
         const streets = STREETS_TO_CHECK.map((streetCoords) => getFeature({
                 name: "Улица для проверки",
                 streetCoords,
-                color: 'green'
+                color: COLOR_FOR_STREETS_TO_CHECK
             })
         );
 

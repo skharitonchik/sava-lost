@@ -6,6 +6,7 @@ function initPoints(leafletMap) {
             html: `<div 
                     style="
                         background-color: ${iconColor}; 
+                        color: white;
                         width: 20px; 
                         height: 20px; 
                         text-align: center;

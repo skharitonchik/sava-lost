@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="src/style/style.css">
     <link rel="stylesheet" href="src/style/center-icon.css">
     <link rel="stylesheet" href="src/style/menu-icon.css">
-    <link
-            rel="stylesheet"
-            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
+    <link rel="stylesheet" href="src/style/settings-menu.css">
+    <link rel="stylesheet" href="src/style/pages.css">
+    <link rel="stylesheet" href="src/style/gallery-page.css">
+    <link rel="stylesheet" href="src/style/helper-page.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
 <div id="menu-icon">
@@ -21,28 +22,104 @@
 
 <div id="menu">
     <div id="menu-content">
-        <ul id="main-controls">
-            <li>
-                <label class="checkbox-label">
-                    <input class="checkbox-input" type="checkbox" id="toggle-points" checked>
-                    Показывать точки
-                </label>
-            </li>
-            <li>
-                <label class="checkbox-label">
-                    <input class="checkbox-input" type="checkbox" id="toggle-streets" checked> Показывать улицы
-                </label>
-            </li>
-        </ul>
-        <ul id="circle-controls">
+        <ul id="page-menu">
+            <li class="menu-item active" data-page="map">Карта</li>
+            <li class="menu-item" data-page="gallery">Галерея</li>
+            <li class="menu-item" data-page="about">Полезные ссылки</li>
         </ul>
     </div>
 </div>
-<div id="map-container">
-    <div id="map"></div>
-    <div id="center-icon" class="icon-wrapper">
-        <div class="icon">
-            <div class="circle"></div>
+
+<div id="page-content">
+    <!-- Контент страниц -->
+    <div id="page-map" class="page active">
+        <div id="map-container">
+            <div id="map"></div>
+            <div id="center-icon" class="icon-wrapper">
+                <div class="icon">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <div id="settings-menu">
+            <ul id="main-controls">
+                <li>
+                    <label class="checkbox-label">
+                        <input class="checkbox-input" type="checkbox" id="toggle-points" checked>
+                        Показывать точки
+                    </label>
+                </li>
+                <li>
+                    <label class="checkbox-label">
+                        <input class="checkbox-input" type="checkbox" id="toggle-streets" checked> Показывать улицы
+                    </label>
+                </li>
+            </ul>
+            <ul id="circle-controls">
+            </ul>
+        </div>
+
+        <div class="settings-menu-icon" id="settings-menu-icon"></div>
+    </div>
+    <div id="page-gallery" class="page">
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="assets/sava/sava-main.jpg" alt="Картинка 1">
+                <a href="assets/sava/sava-main.jpg" download class="download-button">Скачать</a>
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/sava/sava-1.jpg" alt="Картинка 2">
+                <a href="assets/sava/sava-1.jpg" download class="download-button">Скачать</a>
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/sava/sava-2.jpg" alt="Картинка 3">
+                <a href="assets/sava/sava-2.jpg" download class="download-button">Скачать</a>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/sava/sava-3.jpg" alt="Картинка 3">
+                <a href="assets/sava/sava-3.jpg" download class="download-button">Скачать</a>
+            </div>
+            <div class="gallery-item">
+                <img src="assets/sava/sava-4.jpg" alt="Картинка 3">
+                <a href="assets/sava/sava-4.jpg" download class="download-button">Скачать</a>
+            </div>
+        </div>
+        <div class="fullscreen" id="fullscreen">
+            <button class="close-button" id="close-button">Закрыть</button>
+            <img src="" alt="Увеличенная картинка" id="fullscreen-image">
+        </div>
+    </div>
+    <div id="page-about" class="page">
+        <div class="helper-page-container">
+            <h1>Полезные ссылки</h1>
+            <ul class="helper-list">
+                <li class="link-item">
+                    <a href="https://www.facebook.com/groups/wolajustowska" target="_blank">Wolajustowska</a>
+                    <p class="link-description">Группа местрая по району на Wolajustowska, приняли наше сообщение, скинули пару советов</p>
+                </li>
+                <li class="link-item">
+                    <a href="https://www.facebook.com/groups/3053446494705154" target="_blank">Wolajustowska вторая группа</a>
+                    <p class="link-description">вторая местная группа, но какая-то неотзывчивая, последнее сообщение год назад</p>
+                </li>
+                <li class="link-item">
+                    <a href="https://www.facebook.com/KTOZschronisko" target="_blank">KTOZschronisko</a>
+                    <p class="link-description">KTOZschronisko - говорят все кто находит кота идут или пишут сразу сюда</p>
+                </li>
+                <li class="link-item">
+                    <a href="https://www.facebook.com/Krakowskie.Towarzystwo.Opieki.nad.Zwierzetami" target="_blank">Krakowskie.Towarzystwo.Opieki.nad.Zwierzetami</a>
+                    <p class="link-description">еще одна группа от KTOZ</p>
+                </li>
+                <li class="link-item">
+                    <a href="https://www.facebook.com/groups/lostcatskrakow" target="_blank">Группа потерянных животных в Кракове</a>
+                    <p class="link-description">там скидывают всех животных потерянных в Кракове</p>
+                </li>
+                <li class="link-item">
+                    <a href="https://www.facebook.com/groups/ZaginioneKrakow" target="_blank">Еще группа потеряшек в Кракове</a>
+                    <p class="link-description">там скидывают всех животных потерянных в Кракове</p>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

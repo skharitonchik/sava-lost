@@ -2,6 +2,19 @@ const CENTER_COORDS = [50.072207, 19.856787];
 const FIRST_CAT_POINT = [50.0762496591327, 19.85702951393996];
 const SECOND_CAT_POINT = [50.0708092485313, 19.85879826865925];
 const THIRD_CAT_POINT = [50.0678417150839, 19.858996435744917];
+const FORTH_CAT_POINT = [50.05837355649704, 19.829023169337802];
+const SHRONISTKO_POINT = [50.04567829821123, 19.882628307957006];
+// #b3de81 - светлозеленый
+const COLOR_FOR_MARKED_STREETS = '#07575b';
+const COLOR_FOR_NON_MARKED_STREETS = '#ee693f';
+const COLOR_FOR_STREETS_TO_CHECK = '#ebdf00';
+const COLOR_FOR_HOME_POINT = '#265c00';
+const COLOR_FOR_80_PERCENT_SEE = '#66a5ad';
+const COLOR_FOR_50_PERCENT_SEE = '#b38540';
+const COLOR_FOR_CAT_ROUTE = '#f69454';
+const SHRONISTKO_COLOR = '#c8000a';
+
+
 const INIT_ZOOM = 16;
 const INIT_CIRCLE_OPACITY = 0.2;
 const CIRCLE_OPACITY_STEP = 0;
@@ -40,40 +53,42 @@ const CIRCLES = [
     {
         center: CENTER_COORDS,
         name: 'Дом',
-        radius: 2000,
+        radius: 1500,
         color: "blue",
         fillColor: "#e2c499",
     },
     {
         center: SECOND_CAT_POINT,
-        name: 'Кормежка',
+        name: 'Точка кормежки',
         radius: 200,
         color: "red",
         fillColor: "#e2c499",
     },
     {
         center: SECOND_CAT_POINT,
-        name: 'Кормежка',
+        name: 'Точка кормежки',
         radius: 500,
         color: "red",
         fillColor: "#e2c499",
     },
     {
         center: SECOND_CAT_POINT,
-        name: 'Кормежка',
+        name: 'Точка кормежки',
         radius: 1000,
+        color: "red",
+        fillColor: "#e2c499",
+    },
+    {
+        center: SECOND_CAT_POINT,
+        name: 'Точка кормежки',
+        radius: 1500,
         color: "red",
         fillColor: "#e2c499",
     },
 ];
 
 const STREETS_TO_MARK = [
-    [
-        [50.06965011185708, 19.854730999666916],
-        [50.0685743533967, 19.85324446632351],
-        [50.0686585440596, 19.852960276125504],
-        [50.07016927361177, 19.853929437569978]
-    ],
+
     [
         [50.067522638310976, 19.85679405115141],
         [50.06700431205165, 19.859844617193573],
@@ -97,8 +112,22 @@ const STREETS_TO_CHECK = [
 
 const STREETS = [
     [
+        [50.06965011185708, 19.854730999666916],
+        [50.0685743533967, 19.85324446632351],
+        [50.0686585440596, 19.852960276125504],
+        [50.07016927361177, 19.853929437569978]
+    ],
+    [
         [50.06798336805423, 19.855044461657783],
         [50.06768581393004, 19.856674420964627],
+    ],
+    [
+        [50.068631691481386, 19.8482547185767],
+        [50.06791702870384, 19.851821870946086],
+    ],
+    [
+        [50.06787284749525, 19.84609757141192],
+        [50.067930848509704, 19.846459016372297],
     ],
     [
         [50.06705230545939, 19.854446311426088],

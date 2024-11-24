@@ -1,0 +1,69 @@
+#settings-menu {
+    position: fixed;
+    top: 0;
+    left: -500px;
+    width: 500px;
+    height: 100%;
+    background-color: #c4dfe6;
+    color: black;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+#settings-menu.open {
+    left: 0; /* Показывает меню */
+
+}
+
+#settings-menu ul {
+    list-style: none;
+    padding: 20px 20px 20px 60px;
+}
+
+#settings-menu ul li {
+    margin: 15px 0;
+}
+
+#settings-menu ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+#settings-menu ul li a:hover {
+    text-decoration: underline;
+}
+
+.settings-menu-icon {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background: url('../../assets/setting.png') no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.3s ease-in-out;
+}
+
+.settings-menu-icon.open {
+    transform: rotate(30deg) scale(1.3);
+}
+
+.settings-menu-icon:hover {
+    transform: rotate(45deg) scale(1.1);
+}
+
+.settings-menu-icon.open:hover {
+    transform: rotate(30deg) scale(1.3);
+}
+
+@media (max-width: 768px) {
+    #settings-menu {
+        left: -90vw;
+        width: 90vw;
+    }
+}

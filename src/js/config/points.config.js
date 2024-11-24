@@ -4,10 +4,10 @@ function createDescription(title, items) {
         .map(
             ({ description, date, time, result }) => `
       <li>
-        <b>Описание:</b> ${description}<br>
-        <b>Дата:</b> ${date}<br>
-        <b>Время:</b> ${time || ''}<br>
-        <b>Результат:</b> ${result}
+        <b>Описание:</b> ${description ?? ''}<br>
+        <b>Дата:</b> ${date ?? ''}<br>
+        <b>Время:</b> ${time ?? ''}<br>
+        <b>Результат:</b> ${result ?? ''}
       </li>
     `
         )
@@ -25,7 +25,7 @@ function createDescription(title, items) {
 const points = [
     {
         coords: CENTER_COORDS,
-        text: '0',
+        text: 'H',
         description: createDescription("Дом где было ограбление", [
             {
                 description: "Вечер субботы в 19 скорее всего было ограбление, начали поиски кота с 22",
@@ -34,7 +34,7 @@ const points = [
                 result: "видели два раза, два раза убегал.",
             }
         ]),
-        iconColor: "#16501c",
+        iconColor: COLOR_FOR_HOME_POINT,
     },
     {
         coords: FIRST_CAT_POINT,
@@ -46,7 +46,7 @@ const points = [
                 result: "Нашли только черного кота в дровнике.",
             }
         ]),
-        iconColor: "#882426",
+        iconColor: COLOR_FOR_80_PERCENT_SEE,
     },
     {
         coords: SECOND_CAT_POINT,
@@ -63,7 +63,7 @@ const points = [
                 result: "сказала позвонит когда снова увидит.",
             },
         ]),
-        iconColor: "#882426",
+        iconColor: COLOR_FOR_80_PERCENT_SEE,
     },
     {
         coords: THIRD_CAT_POINT,
@@ -76,6 +76,30 @@ const points = [
                 result: "Никого не нашли спустя 10 минут.",
             },
         ]),
-        iconColor: "#882426",
+        iconColor: COLOR_FOR_80_PERCENT_SEE,
+    },
+    {
+        coords: FORTH_CAT_POINT,
+        text: '4',
+        description: createDescription("Остановка, видели похожего кота", [
+            {
+                description: "Видели на улице похожего кота",
+                date: "2024-11-24",
+                time: "11.30",
+                result: "Лежит котик под деревом, похож раскрасом, но прислали фотку не наш(",
+            },
+        ]),
+        iconColor: COLOR_FOR_50_PERCENT_SEE,
+    },
+
+    {
+        coords: SHRONISTKO_POINT,
+        text: 'SH',
+        description: createDescription("Схронистко для бездомных животных", [
+            {
+                description: "Советуют ездить каждый день, потому что говорят может быть по разному и некоторые на месте могут не озаботиться и позвонить",
+            },
+        ]),
+        iconColor: SHRONISTKO_COLOR,
     },
 ];
